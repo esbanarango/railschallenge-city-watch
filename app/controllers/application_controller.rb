@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-
   # Includes
   include ActionController::ImplicitRender
   include ActsAsApi::Rendering
@@ -13,8 +12,7 @@ class ApplicationController < ActionController::API
 
   private
 
-  def unpermitted_parameters e
-    render json: {message: e.message}, status: :unprocessable_entity
+  def unpermitted_parameters(e)
+    render json: { message: e.message }, status: :unprocessable_entity
   end
-
 end

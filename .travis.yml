@@ -5,4 +5,4 @@ rvm:
 before_script:
   - bundle exec rake db:migrate --trace
 script:
-  - RAILS_ENV=test rake test
+  - RAILS_ENV=test rake test && rubocop

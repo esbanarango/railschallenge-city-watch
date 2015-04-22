@@ -8,10 +8,9 @@ Bundler.require(*Rails.groups)
 
 module CityWatch
   class Application < Rails::Application
-
     config.api_only = true
 
-    config.autoload_paths += Dir[ Rails.root.join('app', 'models', '{**}') ]
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
     config.active_record.raise_in_transactional_callbacks = true
   end

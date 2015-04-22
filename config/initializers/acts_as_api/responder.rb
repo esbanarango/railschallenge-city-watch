@@ -1,6 +1,5 @@
 module ActsAsApi
   class Responder < ActionController::Responder
-
     def json_resource_errors
       { message: resource.errors }
     end
@@ -14,6 +13,5 @@ module ActsAsApi
         super
       end
     end
-
   end
 end
