@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module CityWatch
   class Application < Rails::Application
+
+    config.api_only = true
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

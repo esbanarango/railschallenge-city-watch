@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
+gem 'responders', '~> 2.0'
+gem 'rails-api'
+gem 'acts_as_api', '~> 0.4.2'
 gem 'sqlite3', '1.3.10'
 
 gem 'jbuilder', '~> 2.0'
