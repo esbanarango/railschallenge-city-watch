@@ -5,7 +5,7 @@ module API
     # GET api/v1/emergencies.json
     def index
       @emergencies = Emergency.all
-      respond_with :api, @emergencies, api_template: :default
+      respond_with :api, @emergencies, api_template: :default, meta: { full_responses: Emergency.full_responses }
     end
 
     # PATCH/PUT api/v1/emergencies/:name.json
