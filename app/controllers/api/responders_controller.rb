@@ -8,7 +8,7 @@ module API
       respond_with :api, @responders, api_template: :default
     end
 
-    # PATCH/PUT api/v1/responders/1.json
+    # PATCH/PUT api/v1/responders/:name.json
     def show
       respond_with :api, @responder, api_template: :default
     end
@@ -20,7 +20,7 @@ module API
       respond_with :api, @responder, api_template: :default
     end
 
-    # PATCH/PUT api/v1/responders/1.json
+    # PATCH/PUT api/v1/responders/:name.json
     def update
       @responder.update(responder_params)
       respond_with :api, @responder, api_template: :default
@@ -30,7 +30,7 @@ module API
 
     # Use callbacks to share common setup or constraints between actions.
     def set_responder
-      @responder = Responder.find_by(name: params[:id])
+      @responder = Responder.find_by!(name: params[:name])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
