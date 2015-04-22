@@ -5,7 +5,7 @@ module API
     # GET api/v1/responders.json
     def index
       @responders = Responder.all
-      respond_with :api, @responder, api_template: options[:api_template], meta: meta_datad
+      respond_with :api, @responders, api_template: :default
     end
 
     # PATCH/PUT api/v1/responders/1.json
