@@ -2,25 +2,25 @@ module API
   class EmergenciesController < ApplicationController
     before_action :set_emergency, only: [:show, :update]
 
-    # GET api/v1/emergencies.json
+    # GET emergencies.json
     def index
       @emergencies = Emergency.all
       respond_with :api, @emergencies, api_template: :default, meta: { full_responses: Emergency.full_responses }
     end
 
-    # PATCH/PUT api/v1/emergencies/:name.json
+    # PATCH/PUT emergencies/:code.json
     def show
       respond_with :api, @emergency, api_template: :default
     end
 
-    # POST api/v1/emergencies.json
+    # POST emergencies.json
     def create
       @emergency = Emergency.new(emergency_params(:create))
       Dispatcher.new(@emergency).call if @emergency.save
       respond_with :api, @emergency, api_template: :default
     end
 
-    # PATCH/PUT api/v1/emergencies/:name.json
+    # PATCH/PUT emergencies/:code.json
     def update
       @emergency.update(emergency_params)
       respond_with :api, @emergency, api_template: :default
