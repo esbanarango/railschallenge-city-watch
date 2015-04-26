@@ -16,7 +16,7 @@ module API
     # POST emergencies.json
     def create
       @emergency = Emergency.new(emergency_params(:create))
-      Dispatcher.new(@emergency).call if @emergency.save
+      DispatcherService.new(@emergency).call if @emergency.save
       respond_with :api, @emergency, api_template: :default
     end
 

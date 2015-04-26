@@ -5,7 +5,7 @@ module API
     # GET responders.json
     def index
       if params[:show] == 'capacity'
-        render json: CapacityReporter.new.call, status: :ok
+        render json: CapacityReporterService.new.call, status: :ok
       else
         @responders = Responder.all
         respond_with :api, @responders, api_template: :default

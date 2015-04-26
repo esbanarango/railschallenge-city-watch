@@ -1,4 +1,4 @@
-class CapacityReporter
+class CapacityReporterService
   attr_accessor :type
 
   def call

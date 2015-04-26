@@ -18,18 +18,18 @@ class RespondersCapacityTest < ActionDispatch::IntegrationTest
     patch '/responders/M-101', responder: { on_duty: true }
   end
 
-  # test 'GET /responders/?show=capacity makes the emergency capacity available' do
-  #   get '/responders/?show=capacity'
-  #   assert_equal(
-  #     {
-  #       'capacity' => {
-  #         'Fire' => [3, 3, 2, 2],
-  #         'Police' => [7, 7, 3, 3],
-  #         'Medical' => [6, 6, 6, 6]
-  #       }
-  #     }, JSON.parse(body)
-  #   )
-  # end
+  test 'GET /responders/?show=capacity makes the emergency capacity available' do
+    get '/responders/?show=capacity'
+    assert_equal(
+      {
+        'capacity' => {
+          'Fire' => [3, 3, 2, 2],
+          'Police' => [7, 7, 3, 3],
+          'Medical' => [6, 6, 6, 6]
+        }
+      }, JSON.parse(body)
+    )
+  end
 
   test 'GET /responders/?show=capacity increase and decrease as emergencies are created and resolved' do
     post '/emergencies/', emergency: { code: 'E-00000001', fire_severity: 1, police_severity: 7, medical_severity: 1 }

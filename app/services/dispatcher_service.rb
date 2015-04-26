@@ -1,4 +1,4 @@
-class Dispatcher
+class DispatcherService
   attr_accessor :severity, :responders_ready, :emergency, :total_responders_capacity
 
   def initialize(emergency)
