@@ -10,7 +10,11 @@ module CityWatch
   class Application < Rails::Application
     config.api_only = true
 
-    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+    config.autoload_paths += Dir[
+      Rails.root.join('app', 'models', '{**}'),
+      Rails.root.join('app', 'services', '{**}'),
+      Rails.root.join('app', 'responses', '{**}')
+    ]
 
     config.active_record.raise_in_transactional_callbacks = true
   end

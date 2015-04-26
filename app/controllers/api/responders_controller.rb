@@ -4,8 +4,12 @@ module API
 
     # GET api/v1/responders.json
     def index
-      @responders = Responder.all
-      respond_with :api, @responders, api_template: :default
+      if params[:show] == 'capacity'
+        render json: CapacityReporter.new.call, status: :ok
+      else
+        @responders = Responder.all
+        respond_with :api, @responders, api_template: :default
+      end
     end
 
     # PATCH/PUT api/v1/responders/:name.json

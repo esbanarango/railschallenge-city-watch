@@ -6,6 +6,10 @@ class Emergency < ActiveRecord::Base
   validates :code, :fire_severity, :police_severity, :medical_severity, presence: true
   validates :fire_severity, :police_severity, :medical_severity, numericality: { greater_than_or_equal_to: 0 }
 
+  # Scopes
+  scope :resolved, lambda { where.not(resolved_at: nil) }
+  scope :unresolved, lambda { where(resolved_at: nil) }
+
   class << self
     def full_responses
       [enough_emergency, count]
