@@ -25,7 +25,7 @@ class DispatcherService
 
     temp_ready_responders = responders_ready.take_while { |responder| responder.capacity < severity }
 
-    # Check if we have enough capacity to exactly respond
+    # Check if we have enough capacity to care the emergency severity
     if enough_capacity_to_respond? temp_ready_responders
       self.responders_ready = temp_ready_responders
     end

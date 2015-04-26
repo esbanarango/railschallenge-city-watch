@@ -21,27 +21,23 @@ class CapacityReporterService
     ]
   end
 
-  def responders
+  def responders_by_type
     Responder.where(type: type)
   end
 
-  def type_severity
-    "#{type.downcase}_severity".to_sym
-  end
-
   def total_capacity
-    responders.sum(:capacity)
+    responders_by_type.sum(:capacity)
   end
 
   def total_available
-    responders.available.sum(:capacity)
+    responders_by_type.available.sum(:capacity)
   end
 
   def total_on_duty
-    responders.on_duty.sum(:capacity)
+    responders_by_type.on_duty.sum(:capacity)
   end
 
   def total_ready
-    responders.ready.sum(:capacity)
+    responders_by_type.ready.sum(:capacity)
   end
 end

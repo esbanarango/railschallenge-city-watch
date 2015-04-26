@@ -20,7 +20,7 @@ class Emergency < ActiveRecord::Base
     [enough_emergency, count]
   end
 
-  # How many emergencies in the city had enough emergency
+  # How many emergencies in the city have enough emergency
   # personnel available to handle them historically.
   def self.enough_emergency
     total = 0
