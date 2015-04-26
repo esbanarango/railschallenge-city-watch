@@ -8,6 +8,9 @@ module Responses
         t.add :fire_severity
         t.add :police_severity
         t.add :medical_severity
+        t.add :resolved_at
+        t.add lambda{ |emergency| emergency.full_response? }, as: :full_response
+        t.add lambda{ |emergency| emergency.responders.pluck(:name) }, as: :responders
       end
     end
   end

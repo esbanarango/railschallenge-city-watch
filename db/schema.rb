@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20150422155506) do
     t.datetime "updated_at",       null: false
   end
 
+  add_index "emergencies", ["code"], name: "index_emergencies_on_code"
+
   create_table "responders", force: :cascade do |t|
     t.string   "type"
     t.string   "name"

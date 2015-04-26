@@ -15,8 +15,8 @@ module API
 
     # POST api/v1/emergencies.json
     def create
-      @emergency = Emergency.new(emergency_params)
-      @emergency.save
+      @emergency = Emergency.new(emergency_params(:create))
+      Dispatcher.new(@emergency).call if @emergency.save
       respond_with :api, @emergency, api_template: :default
     end
 
@@ -34,8 +34,10 @@ module API
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def emergency_params
-      permitted = [:code, :fire_severity, :police_severity, :medical_severity]
+    def emergency_params(action = :update)
+      permitted = [:fire_severity, :police_severity, :medical_severity]
+      permitted << :resolved_at if action == :update
+      permitted << :code if action == :create
       params.require(:emergency).permit(permitted)
     end
   end

@@ -10,6 +10,15 @@ class Emergency < ActiveRecord::Base
   scope :resolved, lambda { where.not(resolved_at: nil) }
   scope :unresolved, lambda { where(resolved_at: nil) }
 
+  #Relations
+  has_many :responders, foreign_key:'emergency_code', primary_key: :code , dependent: :nullify
+
+  def full_response?
+    Responder::TYPES.all? do |type|
+      responders.where(type: type).sum(:capacity) >= send("#{type}_severity".downcase)
+    end
+  end
+
   class << self
     def full_responses
       [enough_emergency, count]
