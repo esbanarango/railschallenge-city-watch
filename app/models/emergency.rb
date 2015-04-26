@@ -44,9 +44,7 @@ class Emergency < ActiveRecord::Base
   private
 
   def check_resolved
-    if resolved_at_changed? && !resolved_at.nil?
-      responders.update_all(emergency_code: nil)
-    end
+    return unless resolved_at_changed? && !resolved_at.nil?
+    responders.update_all(emergency_code: nil)
   end
-
 end

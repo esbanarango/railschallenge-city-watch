@@ -1,13 +1,12 @@
 class CapacityReporter
-
   attr_accessor :type
 
   def call
     {
-      capacity:{
+      capacity: {
         'Fire': report('Fire'),
         'Police': report('Police'),
-        'Medical': report('Medical'),
+        'Medical': report('Medical')
       }
     }
   end

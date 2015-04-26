@@ -9,8 +9,8 @@ module Responses
         t.add :police_severity
         t.add :medical_severity
         t.add :resolved_at
-        t.add lambda{ |emergency| emergency.full_response? }, as: :full_response
-        t.add lambda{ |emergency| emergency.responders.pluck(:name) }, as: :responders
+        t.add ->(emergency) { emergency.full_response? }, as: :full_response
+        t.add ->(emergency) { emergency.responders.pluck(:name) }, as: :responders
       end
     end
   end
