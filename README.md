@@ -1,5 +1,7 @@
 # City Watch - RailsChallenge v1.0
 
+[![Build Status](https://travis-ci.org/esbanarango/railschallenge-city-watch.svg?branch=master)](https://travis-ci.org/esbanarango/railschallenge-city-watch)
+
 Welcome to the very first **rails**challenge!
 
 ## Late one Friday at the office...
